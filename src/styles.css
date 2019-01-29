@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import url('https://fonts.googleapis.com/css?family=Press+Start+2P'); */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/nes.css/css/nes.min.css";
+
+html, body, pre, code, kbd, samp {
+    Content-Security-Policy: font-src 'https://fonts.googleapis.com/css?family=Press+Start+2P';
+    font-family: 'Press Start 2P', cursive;
+    
+}
+/* Jumbotron grey: #e9ecef; */
+
+
+/* #1a1a1a  Dark blue*/
+/* #4c5c6a Second darkest */
+/* #95a7b1 Pastell blue */
+/* #c3c3c3 Gray */
+/* #dee0e0 lighter Gray */
+/* #eaeaea lightest gray */
+
+body {
+    /* background-color: #e9ecef; */
+    /* background-color: #e9ecef; */
+    background-color: #c3c3c3;
+}
+.bg-dark {
+    background-color: #1a1a1a;
+}
+.jumbotron {
+    background-color: #dee0e0;
+    margin-bottom: 20px;
+    border-bottom: black dashed 5px;
+}
+.jumbotron {
+    
+}
+hr {
+    border: 5;
+}
+
+.nes-container.with-title>.title {
+    background-color: #c3c3c3;
+}

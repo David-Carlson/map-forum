@@ -1,0 +1,23 @@
+<main role='main' class='container'>
+  <div class="row">
+    <section class='col-6 mx-auto nes-container with-title is-centered'>
+      <h2 class="title"><input [(ngModel)]="uploadMap.title" class='nes-btn title' placeholder="Map name here"/></h2>      
+      <div class="nes-container with-title">
+          <p class="title">{{uploadMap.name}}</p>
+          <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt="Map Picture" >
+            
+            <div class="card-body">
+              <input >
+              <div class="dflex justifiy-content-between align-items-center">
+                <button type="button" class="nes-btn">View</button>
+        
+                <button type="button" class="nes-btn">By: {{mapInfo.creator}}</button>
+              </div>
+            </div>
+          </div>  
+        </div>
+    </section>
+  </div>
+    
+</main>>

@@ -1,0 +1,16 @@
+<div class="nes-container with-title">
+  <p class="title">{{mapInfo.name}}</p>
+  <div class="card mb-4 box-shadow">
+    <a routerLink="/maps/{{mapInfo.id}}">
+      <img class="card-img-top" src="{{mapInfo.picture}}" alt="Map Picture" >
+    </a>
+    <div class="card-body">
+      <p class="card-text">{{mapInfo.description}}</p>
+      <div class="dflex justifiy-content-between align-items-center">
+        <a routerLink="/maps/{{mapInfo.id}}"><button type="button" class="nes-btn">View</button></a>
+
+        <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.creator}}"><button type="button" class="nes-btn">By: {{mapInfo.creator}}</button></a>
+      </div>
+    </div>
+  </div>  
+</div>
