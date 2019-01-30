@@ -16,6 +16,9 @@ export class MapListComponent implements OnInit {
   ngOnInit() {
     // this.getMapList();
   }
+  handleClick() {
+    
+  }
 
   // getMapList() : void {
   //   this.mapService.getMapList()

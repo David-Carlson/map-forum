@@ -1,23 +1,37 @@
+<!-- https://codepen.io/kpourdeilami/pen/KDepk?editors=1010 for expanding text -->
+<!-- https://angular.io/guide/forms -->
+<!-- TODO: add name to inputs? -->
 <main role='main' class='container'>
   <div class="row">
-    <section class='col-6 mx-auto nes-container with-title is-centered'>
-      <h2 class="title"><input [(ngModel)]="uploadMap.title" class='nes-btn title' placeholder="Map name here"/></h2>      
-      <div class="nes-container with-title">
-          <p class="title">{{uploadMap.name}}</p>
-          <div class="card mb-4 box-shadow">
-          <img class="card-img-top" src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt="Map Picture" >
-            
-            <div class="card-body">
-              <input >
-              <div class="dflex justifiy-content-between align-items-center">
-                <button type="button" class="nes-btn">View</button>
-        
-                <button type="button" class="nes-btn">By: {{mapInfo.creator}}</button>
-              </div>
-            </div>
-          </div>  
-        </div>
-    </section>
+    <form class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
+      <h2 class="title">
+        <input type='text' id='map-name' name='map-name' class='form-control nes-btn' 
+          placeholder="Map name here" required [(ngModel)]='uploadMap.name'/>
+      </h2>
+      
+      <div class="card mb-8 box-shadow">
+        <img class="card-img-top" src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt="Map Picture">
+
+        <div class="card-body dflex justifiy-content-between align-items-center">
+          <!-- <button type="button" class="nes-btn">Upload Picture</button> -->
+          <!-- <div class="form-group">
+            <input type="file" class="filestyle" data-icon="false">
+          </div> -->
+          <div class="upload-btn-wrapper form-group">
+            <button class="nes-btn">Upload an image</button>
+            <input type="file" name="myfile" />
+          </div>
+          
+
+          <div class="form-group">
+            <label for='map-description-input'>Map Description:</label>
+            <textarea class='form-control' maxlength="255" id='map-description-input' placeholder="Write about what makes your map unique" required ></textarea>
+          </div>
+          
+          <button type="submit" class="nes-btn is-disabled">Upload Map</button>
+        </div>  
+      </div>
+          
+    </form>
   </div>
-    
-</main>>
+</main>

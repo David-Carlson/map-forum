@@ -5,3 +5,5 @@ export class UserMap {
     picture: string;
     creator: string;
 }
+
+// username, mapName, mapDescription, picture, fileMap

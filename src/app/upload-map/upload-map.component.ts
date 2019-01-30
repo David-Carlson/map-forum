@@ -11,11 +11,17 @@ import { UserMap } from '../beans/user-map';
 })
 export class UploadMapComponent implements OnInit {
   uploadMap: UserMap;
+  submitted: boolean = false;
+
   constructor() { 
     this.uploadMap = new UserMap();
   }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.submitted = true;
   }
 
 }

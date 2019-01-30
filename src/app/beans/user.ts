@@ -2,5 +2,5 @@ export class User {
     name: string;
     email: string;
     welcomeMessage: string;
-    maps: number[];
 }
+// Plus joindate, admin status

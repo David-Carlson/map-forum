@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import url('https://fonts.googleapis.com/css?family=Press+Start+2P'); */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/nes.css/css/nes.min.css";
+@import './variables.scss';
+
+html, body, pre, code, kbd, samp {
+    // This is to load the custom font in index.html
+    Content-Security-Policy: font-src 'https://fonts.googleapis.com/css?family=Press+Start+2P';
+    font-family: 'Press Start 2P', cursive;
+    
+}
+//////////////////////////////////////////////////////////////////////////////////////
+// 
+// $jumbotron-grey: #e9ecef; 
+
+// $dark-lowlight:#1a1a1a;
+// $light-lowlight :#4c5c6a;
+// $pastel-blue :#95a7b1;
+// $gray: #c3c3c3;
+// $lighter-gray :#dee0e0;
+// $lightest-gray :#eaeaea;
+
+body {
+    /* background-color: #e9ecef; */
+    /* background-color: #e9ecef; */
+    background-color: $gray;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Bootstrap override 
+.bg-dark {
+    background-color: $dark-lowlight
+}
+.jumbotron {
+    background-color: $lighter-gray;
+    margin-bottom: 20px;
+    border-bottom: $dark-lowlight dashed 5px;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Nes.css overrides
+.nes-container.with-title>.title {
+    background-color: $gray;
+}
+
+// https://stackoverflow.com/questions/8835142/any-way-to-declare-a-size-partial-border-to-a-box
+// To add partial borders
+
+// https://blog.benestudio.co/custom-file-upload-button-with-pure-css-5aacf39aa0a
+// TODO: add css to add back in hover on wrapper button
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}

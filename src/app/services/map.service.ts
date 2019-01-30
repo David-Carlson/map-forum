@@ -28,6 +28,7 @@ export class MapService {
         catchError(this.handleError('getMaps', []))
       );
   }
+
   getUserMaps(username: string): Observable<UserMap[]> {
     let userMapUrl = this.mapUrl + `/?creator=${username}`
     this.messageService.add(`MapService: fetched maps by ${username}`);
