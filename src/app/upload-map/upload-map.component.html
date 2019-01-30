@@ -3,9 +3,9 @@
 <!-- TODO: add name to inputs? -->
 <main role='main' class='container'>
   <div class="row">
-    <form class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
+    <form #mapForm='ngForm' class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
       <h2 class="title">
-        <input type='text' id='map-name' name='map-name' class='form-control nes-btn' 
+        <input #mapName type='text' id='map-name' name='map-name' class='form-control nes-btn' 
           placeholder="Map name here" required [(ngModel)]='uploadMap.name'/>
       </h2>
       
@@ -19,13 +19,15 @@
           </div> -->
           <div class="upload-btn-wrapper form-group">
             <button class="nes-btn">Upload an image</button>
-            <input type="file" name="myfile" />
+            <input #mapPic type="file" class='form-control'  name="map-pic" />
           </div>
           
 
           <div class="form-group">
             <label for='map-description-input'>Map Description:</label>
-            <textarea class='form-control' maxlength="255" id='map-description-input' placeholder="Write about what makes your map unique" required ></textarea>
+            <textarea class='form-control' maxlength="255" [(ngModel)]='inputMap.description' required
+              #mapDescription name='map-description-input' id='map-description-input' 
+              placeholder="Write about what makes your map unique"></textarea>
           </div>
           
           <button type="submit" class="nes-btn is-disabled">Upload Map</button>
