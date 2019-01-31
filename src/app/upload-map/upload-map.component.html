@@ -3,14 +3,14 @@
 <!-- TODO: add name to inputs? -->
 <main role='main' class='container'>
   <div class="row">
-    <form #mapForm='ngForm' class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
+    <form #mapForm='ngForm' (ngSubmit)='onSubmit()' class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
       <h2 class="title">
-        <input #mapName type='text' id='map-name' name='map-name' class='form-control nes-btn' 
-          placeholder="Map name here" required [(ngModel)]='uploadMap.name'/>
+        <input  type='text' class='form-control nes-field' required placeholder="Map name here"
+          #mapName name='map-name' id='map-name'[(ngModel)]='uploadMap.name'/>
       </h2>
       
       <div class="card mb-8 box-shadow">
-        <img class="card-img-top" src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" alt="Map Picture">
+        <img class="card-img-top" src="{{uploadMap.picture}}" alt="Map Picture">
 
         <div class="card-body dflex justifiy-content-between align-items-center">
           <!-- <button type="button" class="nes-btn">Upload Picture</button> -->
@@ -19,18 +19,26 @@
           </div> -->
           <div class="upload-btn-wrapper form-group">
             <button class="nes-btn">Upload an image</button>
-            <input #mapPic type="file" class='form-control'  name="map-pic" />
-          </div>
-          
+            <input type="file" accept='image/*' class='form-control' required (change)='readImage($event)'
+              #mapPic  name="map-pic" id='map-pic'/>
+          </div>     
+            
 
           <div class="form-group">
-            <label for='map-description-input'>Map Description:</label>
-            <textarea class='form-control' maxlength="255" [(ngModel)]='inputMap.description' required
-              #mapDescription name='map-description-input' id='map-description-input' 
-              placeholder="Write about what makes your map unique"></textarea>
+            <label for='map-info-input'>Map Description:</label>
+            <textarea class='form-control nes-textarea' maxlength="255" minlength="10" required 
+              #mapInfo='ngModel' name='mapInfo' [(ngModel)]='uploadMap.description'
+              placeholder="Write about what makes your map unique"></textarea>            
+              <div [hidden]='mapInfo.valid || mapInfo.pristine' class='alert alert-danger'>
+                A description is required
+              </div>
+              <br>
+              <!-- <P>{{mapDescription.className}}</P> -->
+              <!-- <p>Form valid? {{mapForm.form.valid}}</p> -->
           </div>
           
-          <button type="submit" class="nes-btn is-disabled">Upload Map</button>
+          <button type="submit" class="nes-btn is-disabled" 
+            [className]="mapForm.form.valid ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
         </div>  
       </div>
           
