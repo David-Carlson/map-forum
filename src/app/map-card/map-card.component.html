@@ -7,7 +7,7 @@
     <div class="card-body">
       <p class="card-text">{{mapInfo.description}}</p>
       <div class="dflex justifiy-content-between align-items-center">
-        <a routerLink="/maps/{{mapInfo.id}}"><button type="button" class="nes-btn">View</button></a>
+        <a [routerLink]="['/maps', mapInfo.id]"><button type="button" class="nes-btn">View</button></a>
 
         <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.creator}}"><button type="button" class="nes-btn">By: {{mapInfo.creator}}</button></a>
       </div>

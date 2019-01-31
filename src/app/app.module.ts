@@ -14,11 +14,13 @@ import { MapPageComponent } from './map-page/map-page.component';
 import { MapListComponent } from './map-list/map-list.component';
 import { HeaderComponent } from './header/header.component';
 import { MapCardComponent } from './map-card/map-card.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { UploadMapComponent } from './upload-map/upload-map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminPendingMapsComponent } from './admin-pending-maps/admin-pending-maps.component';
 import { UserPendingMapsComponent } from './user-pending-maps/user-pending-maps.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { UserPendingMapsComponent } from './user-pending-maps/user-pending-maps.
     MapListComponent,
     HeaderComponent,
     MapCardComponent,
-    RegistrationComponent,
     UploadMapComponent,
     DashboardComponent,
     AdminPendingMapsComponent,
-    UserPendingMapsComponent
+    UserPendingMapsComponent,
+    RegisterUserComponent,
+    UserDashboardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
