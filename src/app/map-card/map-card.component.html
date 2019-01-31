@@ -5,11 +5,19 @@
       <img class="card-img-top" src="{{mapInfo.picture}}" alt="Map Picture" >
     </a>
     <div class="card-body">
-      <p class="card-text">{{mapInfo.description}}</p>
+      
       <div class="dflex justifiy-content-between align-items-center">
-        <a routerLink="/maps/{{mapInfo.id}}"><button type="button" class="nes-btn">View</button></a>
+        <p class="card-text">{{mapInfo.description}}</p>       
 
-        <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.creator}}"><button type="button" class="nes-btn">By: {{mapInfo.creator}}</button></a>
+        <div class="card-footer">
+          <a routerLink="/maps/{{mapInfo.id}}">
+            <button type="button" class="nes-btn">View</button>
+          </a>
+          <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.creator}}">
+            <button type="button" class="nes-btn">By: {{mapInfo.creator}}</button>
+          </a>
+        </div>
+        
       </div>
     </div>
   </div>  

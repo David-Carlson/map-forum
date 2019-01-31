@@ -3,6 +3,7 @@ export class UserMap {
     name: string;
     description: string;
     picture: string | ArrayBuffer;
+    
     creator: string;
 }
 

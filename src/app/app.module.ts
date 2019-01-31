@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { MapPageComponent } from './map-page/map-page.component';
 import { MapListComponent } from './map-list/map-list.component';
-import { HeaderComponent } from './header/header.component';
 import { MapCardComponent } from './map-card/map-card.component';
 import { UploadMapComponent } from './upload-map/upload-map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,6 +20,7 @@ import { UserPendingMapsComponent } from './user-pending-maps/user-pending-maps.
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,6 @@ import { FooterComponent } from './footer/footer.component';
     UserPageComponent,
     MapPageComponent,
     MapListComponent,
-    HeaderComponent,
     MapCardComponent,
     UploadMapComponent,
     DashboardComponent,
@@ -36,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     UserPendingMapsComponent,
     RegisterUserComponent,
     UserDashboardComponent,
-    FooterComponent
+    FooterComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
