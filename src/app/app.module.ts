@@ -17,6 +17,8 @@ import { MapCardComponent } from './map-card/map-card.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UploadMapComponent } from './upload-map/upload-map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminPendingMapsComponent } from './admin-pending-maps/admin-pending-maps.component';
+import { UserPendingMapsComponent } from './user-pending-maps/user-pending-maps.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MapCardComponent,
     RegistrationComponent,
     UploadMapComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminPendingMapsComponent,
+    UserPendingMapsComponent
   ],
   imports: [
     BrowserModule,
