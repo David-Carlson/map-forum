@@ -36,6 +36,17 @@ body {
     margin-bottom: 20px;
     border-bottom: $dark-lowlight dashed 5px;
 }
+.card {
+    .card-body {
+        background-color:$lightest-gray;
+        border: $dark-lowlight inset 4px;
+        border-top: none;
+    }
+    .card-img-top {
+        border: $dark-lowlight inset 3px;
+    }
+}
+
 footer {
     .text-muted{
         color: $lightest-gray;
