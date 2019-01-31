@@ -12,14 +12,14 @@ html, body, pre, code, kbd, samp {
 }
 //////////////////////////////////////////////////////////////////////////////////////
 // 
-// $jumbotron-grey: #e9ecef; 
+$jumbotron-grey: #e9ecef; 
 
-// $dark-lowlight:#1a1a1a;
-// $light-lowlight :#4c5c6a;
-// $pastel-blue :#95a7b1;
-// $gray: #c3c3c3;
-// $lighter-gray :#dee0e0;
-// $lightest-gray :#eaeaea;
+$dark-lowlight:#1a1a1a;
+$light-lowlight :#4c5c6a;
+$pastel-blue :#95a7b1;
+$gray: #c3c3c3;
+$lighter-gray :#dee0e0;
+$lightest-gray :#eaeaea;
 
 body {
     /* background-color: #e9ecef; */
@@ -35,6 +35,16 @@ body {
     background-color: $lighter-gray;
     margin-bottom: 20px;
     border-bottom: $dark-lowlight dashed 5px;
+}
+footer {
+    .text-muted{
+        color: $lightest-gray;
+    }
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: $dark-lowlight dashed 5px;    
+    
+    background-color: $pastel-blue;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////

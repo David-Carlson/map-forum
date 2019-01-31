@@ -10,6 +10,7 @@ import { UserMap } from '../beans/user-map';
 export class MapCardComponent implements OnInit {
   @Input() mapInfo: UserMap;
   @Input() showAuthor: boolean = true;
+  @Input() pending: boolean = false;
   constructor() { }
 
   ngOnInit() {
