@@ -22,7 +22,7 @@ export class MapPageComponent implements OnInit {
     this.getMap();
   }
   getMap(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('name');
     // this.mapService.get
   }
 

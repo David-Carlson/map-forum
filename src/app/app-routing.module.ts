@@ -10,7 +10,7 @@ import { AdminPendingMapsComponent } from './admin-pending-maps/admin-pending-ma
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'maps/:id', component: MapPageComponent },
+  { path: 'maps/:name', component: MapPageComponent },
   { path: 'users/:name', component: UserPageComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'uploadMap', component: UploadMapComponent },

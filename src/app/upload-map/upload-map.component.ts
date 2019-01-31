@@ -18,9 +18,8 @@ export class UploadMapComponent implements OnInit {
   uploadMap: UserMap;
   submitted: boolean = false;
   defaultMapPic:string = "https://www.freeiconspng.com/uploads/no-image-icon-6.png";
-  mapPicture;
   mapPictureMessage;
-  mapFile;
+
 
   constructor() { 
     this.uploadMap = new UserMap('', '', '', null, null, null);
@@ -28,7 +27,9 @@ export class UploadMapComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // https://grokonez.com/frontend/angular/angular-4-uploadget-multipartfile-tofrom-spring-boot-server
+  // https://stackoverflow.com/questions/47756044/send-json-and-image-with-single-request-angular-spring-boot?rq=1
+  // https://academind.com/learn/angular/snippets/angular-image-upload-made-easy/
   readImage(event): void {
     this.mapPictureMessage = null;
     if (event.target.files && event.target.files[0]) {
@@ -38,10 +39,10 @@ export class UploadMapComponent implements OnInit {
         return;
       }
 
-      this.uploadMap.pictureFile = event.target.files[0];
+      const pictureFile = event.target.files[0];
       var reader = new FileReader();
-      reader.onload = e => this.uploadMap.picture = reader.result;
-      reader.readAsDataURL(this.uploadMap.pictureFile);
+      reader.onload = e => this.uploadMap.pictureDataUrl = reader.result;
+      reader.readAsDataURL(pictureFile);
       console.log('done?');
     }
   }
