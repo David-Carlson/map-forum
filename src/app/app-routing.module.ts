@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'users/:name', component: UserPageComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'uploadMap', component: UploadMapComponent },
-  { path: 'AdminDashboard', component: AdminPendingMapsComponent}
+  { path: 'admin/dashboard', component: AdminPendingMapsComponent}
 ];
 
 @NgModule({

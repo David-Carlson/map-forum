@@ -1,7 +1,7 @@
 <div class="nes-container with-title">
   <p class="title">{{mapInfo.name}}</p>
   <div class="card mb-4 box-shadow">
-    <a routerLink="/maps/{{mapInfo.id}}">
+    <a routerLink="/maps/{{mapInfo.name}}">
       <img class="card-img-top" src="{{mapInfo.picture}}" alt="Map Picture" >
     </a>
     <div class="card-body">
@@ -10,11 +10,11 @@
         <p class="card-text">{{mapInfo.description}}</p>       
 
         <div class="card-footer">
-          <a routerLink="/maps/{{mapInfo.id}}">
+          <a routerLink="/maps/{{mapInfo.name}}">
             <button type="button" class="nes-btn">View</button>
           </a>
-          <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.creator}}">
-            <button type="button" class="nes-btn">By: {{mapInfo.creator}}</button>
+          <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.username}}">
+            <button type="button" class="nes-btn">By: {{mapInfo.username}}</button>
           </a>
         </div>
         

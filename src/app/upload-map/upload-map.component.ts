@@ -17,12 +17,13 @@ import { UserMap } from '../beans/user-map';
 export class UploadMapComponent implements OnInit {
   uploadMap: UserMap;
   submitted: boolean = false;
+  defaultMapPic:string = "https://www.freeiconspng.com/uploads/no-image-icon-6.png";
   mapPicture;
   mapPictureMessage;
+  mapFile;
 
   constructor() { 
-    this.uploadMap = new UserMap();
-    this.uploadMap.picture = "https://www.freeiconspng.com/uploads/no-image-icon-6.png";
+    this.uploadMap = new UserMap('', '', '', null, null, null);
   }
 
   ngOnInit() {
@@ -37,11 +38,21 @@ export class UploadMapComponent implements OnInit {
         return;
       }
 
-      const file = event.target.files[0];
+      this.uploadMap.pictureFile = event.target.files[0];
       var reader = new FileReader();
       reader.onload = e => this.uploadMap.picture = reader.result;
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(this.uploadMap.pictureFile);
       console.log('done?');
+    }
+  }
+  readFile(event): void {
+    if (event.target.files && event.target.files[0]) {
+      this.uploadMap.mapFile = event.target.files[0];
+      // TODO: Find our correct reader method
+      // var reader = new FileReader();
+      // reader.onload = e => this.mapFile = reader.result;
+      // reader.readAsDataURL(file);
+      console.log('done with file upload');
     }
   }
 
