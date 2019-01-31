@@ -22,7 +22,7 @@ export class UploadMapComponent implements OnInit {
 
 
   constructor() { 
-    this.uploadMap = new UserMap('', '', '', null, null, null);
+    this.uploadMap = new UserMap('', '', '', true, null, null, null);
   }
 
   ngOnInit() {
@@ -40,10 +40,12 @@ export class UploadMapComponent implements OnInit {
       }
 
       const pictureFile = event.target.files[0];
+      this.uploadMap.pictureFile = pictureFile;
       var reader = new FileReader();
       reader.onload = e => this.uploadMap.pictureDataUrl = reader.result;
       reader.readAsDataURL(pictureFile);
-      console.log('done?');
+      console.log('done with pictureFile');
+      console.log(this.uploadMap.pictureFile == null)
     }
   }
   readFile(event): void {
@@ -53,7 +55,8 @@ export class UploadMapComponent implements OnInit {
       // var reader = new FileReader();
       // reader.onload = e => this.mapFile = reader.result;
       // reader.readAsDataURL(file);
-      console.log('done with file upload');
+      console.log('done with map-file upload');
+      console.log(this.uploadMap.mapFile == null)
     }
   }
 

@@ -14,7 +14,8 @@ import { UserService } from '../services/user.service';
 })
 export class UserPageComponent implements OnInit {
   user: User;
-  myMaps: UserMap[];
+  myResolvedMaps: UserMap[];
+  myPendingMaps: UserMap[];
   defaultMessage: string = 'Tracking down that user...';
 
   constructor(
@@ -47,7 +48,12 @@ export class UserPageComponent implements OnInit {
 
   getUserMaps(username: string): void {
     this.mapService.getUserMaps(username)
-      .subscribe(mapList => this.myMaps = mapList);
+      .subscribe(mapList => this.handleUserMaps(mapList));
+  }
+  handleUserMaps(allMaps: UserMap[]): void {
+    var separatedMaps = this.mapService.getPendingAndResolvedMaps(allMaps);
+    this.myResolvedMaps = separatedMaps['resolved'];
+    this.myPendingMaps = separatedMaps['pending'];
   }
 
 }

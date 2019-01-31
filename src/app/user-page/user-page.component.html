@@ -16,6 +16,10 @@
 
   <section id='user-maps' class='container nes-container with-title'>
       <h2 class="title">My Maps</h2>      
-      <app-map-list [mapCards]='myMaps' [showAuthor]='false'></app-map-list>
+      <app-map-list [mapCards]='myResolvedMaps' [showAuthor]='false'></app-map-list>
+  </section>
+  <section id='user-maps' class='container nes-container with-title'>
+      <h2 class="title">My Pending Maps</h2>      
+      <app-map-list [mapCards]='myPendingMaps' [showAuthor]='false'></app-map-list>
   </section>
 </main>

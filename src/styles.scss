@@ -37,6 +37,9 @@ body {
     border-bottom: $dark-lowlight dashed 5px;
 }
 .card {
+    
+    // box-sizing: border-box;
+    max-width: 100%;
     .card-body {
         background-color:$lightest-gray;
         border: $dark-lowlight inset 4px;
@@ -65,6 +68,10 @@ footer {
 // Nes.css overrides
 .nes-container.with-title>.title {
     background-color: $gray;
+}
+.nes-container {    
+    // box-sizing: border-box;
+    max-width: 100%;
 }
 
 // https://stackoverflow.com/questions/8835142/any-way-to-declare-a-size-partial-border-to-a-box

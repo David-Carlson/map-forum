@@ -30,7 +30,7 @@ export class MapService {
   }
 
   getUserMaps(username: string): Observable<UserMap[]> {
-    let userMapUrl = this.mapUrl + `/?creator=${username}`
+    let userMapUrl = this.mapUrl + `/?username=${username}`
     this.messageService.add(`MapService: fetched maps by ${username}`);
     return this.http.get<UserMap[]>(userMapUrl)
       .pipe(
@@ -46,6 +46,13 @@ export class MapService {
         tap(_ => this.log('fetched single map')),
         catchError(this.handleError('getMap', null))
       );
+  }
+  getPendingAndResolvedMaps(allMaps: UserMap[]): any {
+    var pending: UserMap[];
+    var resolved: UserMap[];
+    pending = allMaps.filter(m => m.isPending);
+    resolved = allMaps.filter(m => !m.isPending);
+    return { 'pending': pending, 'resolved': resolved };
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

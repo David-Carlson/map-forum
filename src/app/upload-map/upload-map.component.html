@@ -22,6 +22,12 @@
             <input type="file" accept='image/*' class='form-control' required (change)='readImage($event)'
               #mapPic  name="map-pic" id='map-pic'/>
           </div>     
+
+          <div class='upload-btn-wrapper form-group'>
+            <button class="nes-btn">Upload the Map File</button>
+            <input type='file' class='form-control' required (change)='readFile($event)'
+              #mapFile name='map-file' id='map-file'/>
+          </div>
             
 
           <div class="form-group">
@@ -36,9 +42,10 @@
               <!-- <P>{{mapDescription.className}}</P> -->
               <!-- <p>Form valid? {{mapForm.form.valid}}</p> -->
           </div>
-          
+          <p *ngIf='uploadMap.mapFile'>Map File here</p>
+          <p *ngIf='uploadMap.pictureFile'>Picture File here</p>
           <button type="submit" class="nes-btn is-disabled" 
-            [className]="mapForm.form.valid ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
+            [className]="mapForm.form.valid  && uploadMap.mapFile && uploadMap.pictureFile ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
         </div>  
       </div>
           
