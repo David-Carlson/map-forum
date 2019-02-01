@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -46,6 +46,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     AppRoutingModule, 
     HttpClientModule, 
     FormsModule,
+    ReactiveFormsModule,
     // Comment these two lines & remove comma on line above to remove mock-backend
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false})

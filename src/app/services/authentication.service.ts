@@ -11,6 +11,7 @@ import { User } from '../beans/user';
 })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
+  // For reactively updating to user logins/logouts
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) { 
@@ -18,6 +19,7 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  // Useful for knowing value at single time, like possible auth.guard
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
