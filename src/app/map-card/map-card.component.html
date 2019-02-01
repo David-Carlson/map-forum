@@ -9,13 +9,18 @@
       <div class="dflex justifiy-content-between align-items-center">
         <p class="card-text">{{mapInfo.description}}</p>       
 
-        <div class="card-footer">
+        <div class="card-footer align-items-center">
           <a routerLink="/maps/{{mapInfo.name}}">
             <button type="button" class="nes-btn">View</button>
           </a>
+          <br>
           <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.username}}">
             <button type="button" class="nes-btn">By: {{mapInfo.username}}</button>
           </a>
+          <div class="btn-group" *ngIf='pendingButton' role='group' aria-label='Approve or Deny'>
+            <button type='button' class='nes-btn is-success' (click)='onApprove()'>Approve</button>
+            <!-- <button type='button' class='nes-btn is-error'>Deny</button> -->
+          </div>
         </div>
         
       </div>

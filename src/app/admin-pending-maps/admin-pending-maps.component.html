@@ -1,3 +1,16 @@
-<p>
-  admin-pending-maps works!
-</p>
+<main role=main>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Welcome back, Admin</h1>
+      <p class="lead text-muted">Remember to adhere to our guidelines </p>
+      <p>
+        <a routerLink='/admin/dashboard' class="nes-btn is-primary">Admin dashboard</a>
+      </p>
+    </div>
+  </section>
+  
+  <section class='container nes-container with-title is-centered'>
+    <h1 class="title">Pending Maps</h1>      
+      <app-map-list [mapCards]='mapCards' [pendingButton]='true'></app-map-list>
+  </section>
+</main>

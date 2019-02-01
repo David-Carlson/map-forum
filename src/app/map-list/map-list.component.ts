@@ -10,6 +10,7 @@ import { UserMap } from '../beans/user-map';
 export class MapListComponent implements OnInit {
   @Input() mapCards: UserMap[];
   @Input() showAuthor: boolean = true;
+  @Input() pendingButton: boolean = false;
 
   constructor(private mapService: MapService) { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserMap } from '../beans/user-map';
+import { MapService } from '../services/map.service';
 
 
 @Component({
@@ -10,10 +11,17 @@ import { UserMap } from '../beans/user-map';
 export class MapCardComponent implements OnInit {
   @Input() mapInfo: UserMap;
   @Input() showAuthor: boolean = true;
-  @Input() pending: boolean = false;
-  constructor() { }
+  @Input() pendingButton: boolean = false;
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
   }
+
+  onApprove() {
+    this.mapService.approveMap(this.mapInfo.name);
+  }
+  // onDeny() {
+
+  // }
 
 }

@@ -54,6 +54,14 @@ export class MapService {
     resolved = allMaps.filter(m => !m.isPending);
     return { 'pending': pending, 'resolved': resolved };
   }
+  approveMap(mapName: string): Observable<any> {
+    let approveUrl = this.mapUrl + `/approve`;
+    return this.http.put<string>(approveUrl, mapName, httpOptions)
+      .pipe(
+        tap(_ => this.log(`approved map ${mapName}`)),
+        catchError(this.handleError('approveMap', null))
+      );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
