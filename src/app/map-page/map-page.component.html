@@ -1,19 +1,52 @@
 <main role='main'>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-10 col-sm-12 mx-auto nes-container with-title">
+            <p class="title" *ngIf='map; else defaultName'>{{map.name}}</p>
+            <ng-template #defaultName>Finding map...</ng-template>
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" [src]="map? map.pictureDataUrl : altPic" alt="Map Picture" >
+              
+              <div class="card-body">
+                
+                <div class="dflex justifiy-content-between align-items-center">
+                  <p class="card-text" *ngIf='map; else defaultDescription'>{{map.description}}</p>       
+                  <ng-template #defaultDescription>...</ng-template>
+          
+                  <div class="card-footer align-items-center">
+                    <a *ngIf='map' routerLink="/users/{{map.username}}">
+                      <button type="button" class="nes-btn mx-auto">By: {{map.username}}</button>
+                    </a>
+                    <!-- <div class="btn-group" *ngIf='pendingButton' role='group' aria-label='Approve or Deny'>
+                      <button type='button' class='nes-btn is-success' (click)='onApprove()'>Approve</button>
+                      <button type='button' class='nes-btn is-error'>Deny</button>
+                    </div> -->
+                  </div>
+                  
+                </div>
+              </div>
+            </div>  
+          </div>
+    </div>    
+  </div>
+</main>
+
+
+<!-- <main role='main'>
     <section id='map-spotlight' class='container nes-container with-title'>
-      <h2 class="title">Who am I?</h2>
-      <div class="messages">
-        <div class="message -left">
-          <i class="nes-bcrikko"></i>
-          <div class="nes-balloon from-left">
-            <p>Hello NES.css</p>
+      <h2 class="title" *ngIf='map; else defaultTitle'>{{map.name}}</h2>
+      <ng-template #defaultTitle>Finding that map...</ng-template>
+      
+      <div class="container">
+        <div class="row">
+          <div class="image-preview col-8">
+            <img *ngIf='map' src="{{map.pictureDataUrl}}" alt="A preview of the map">
+          </div>
+          <div *ngIf='map' class="map-description">
+            <p>{{map.description}}</p>
           </div>
         </div>
       </div>
         
-    </section>
-  
-    <section id='user-maps' class='container nes-container with-title'>
-        <h2 class="title">My Maps</h2>      
-        <app-map-list [mapCards]='myMaps'></app-map-list>
-    </section>
-  </main>
+    </section>  
+  </main> -->

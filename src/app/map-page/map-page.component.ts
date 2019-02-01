@@ -12,6 +12,7 @@ import { MapService } from '../services/map.service';
 })
 export class MapPageComponent implements OnInit {
   map: UserMap;
+  altPic: string = 'https://cdn3.iconfinder.com/data/icons/game-development-retro/60/005_-_Game_Testing-512.png';
   constructor(
     private route: ActivatedRoute,
     private mapService: MapService,
@@ -22,8 +23,10 @@ export class MapPageComponent implements OnInit {
     this.getMap();
   }
   getMap(): void {
-    const id = this.route.snapshot.paramMap.get('name');
-    // this.mapService.get
+    const name = this.route.snapshot.paramMap.get('name');
+    console.log(`Retrieving ${name}`)
+    this.mapService.getMap(name)
+      .subscribe(mapList => this.map = mapList[0]);
   }
 
   goBack(): void {

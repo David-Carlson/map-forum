@@ -21,6 +21,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NavComponent } from './nav/nav.component';
     RegisterUserComponent,
     UserDashboardComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { NavComponent } from './nav/nav.component';
     AppRoutingModule, 
     HttpClientModule, 
     FormsModule,
+    // Comment these two lines & remove comma on line above to remove mock-backend
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false})
   ],

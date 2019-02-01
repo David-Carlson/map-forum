@@ -2,15 +2,16 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Welcome back, Admin</h1>
-      <p class="lead text-muted">Remember to adhere to our guidelines </p>
+      <p class="lead text-muted">Remember to adhere to our guidelines and not go mad with power </p>
       <p>
-        <a routerLink='/admin/dashboard' class="nes-btn is-primary">Admin dashboard</a>
+        <a routerLink='' class="nes-btn is-primary">Home</a>
       </p>
     </div>
   </section>
   
   <section class='container nes-container with-title is-centered'>
     <h1 class="title">Pending Maps</h1>      
-      <app-map-list [mapCards]='mapCards' [pendingButton]='true'></app-map-list>
+      <app-map-list [mapCards]='pendingMaps' [pendingButton]='true'></app-map-list>
   </section>
 </main>
+

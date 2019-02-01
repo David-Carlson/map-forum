@@ -39,12 +39,12 @@ export class MapService {
       );
   }
   // TODO: Test this
-  getMap(id: number): Observable<UserMap> {
-    let singleMapUrl = this.mapUrl + `/${id}`;
-    return this.http.get<UserMap>(singleMapUrl)
+  getMap(name: string): Observable<UserMap[]> {
+    let singleMapUrl = this.mapUrl + `/?name=${name}`;
+    return this.http.get<UserMap[]>(singleMapUrl)
       .pipe(
         tap(_ => this.log('fetched single map')),
-        catchError(this.handleError('getMap', null))
+        catchError(this.handleError('getMap', []))
       );
   }
   getPendingAndResolvedMaps(allMaps: UserMap[]): any {
