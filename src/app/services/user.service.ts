@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'api/users'
+  private userUrl = 'http://localhost:8080/api/users'
 
   constructor(
     private httpClient: HttpClient, 
@@ -27,10 +27,19 @@ export class UserService {
         catchError(this.handleError('getUser', null))
       );
   }
+  registerUser(username: string, email: string, password: string): Observable<User> {
+    var userData = { "admin": "user", "email": email, "joindate": null, "password": password, "username": username };
+    return this.httpClient.post<void>(this.userUrl + '/register', userData, httpOptions)
+    .pipe(
+      tap(_ => this.log('registered User')),
+      catchError(this.handleError('registerUser', null))
+    );
+  }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remove logging
-      console.error(error);
+      console.error(`${operation} failed: ${error.message}`);
+
       // TODO: Write it better
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);

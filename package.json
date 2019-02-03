@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "clean": "rm /c/Users/jmasg/Documents/Proj-2-WS/project-two-djl/App/src/main/resources/static/*.*",
+    "package": "cp -a ./dist/map-forum/. /c/Users/jmasg/Documents/Proj-2-WS/project-two-djl/App/src/main/resources/static",
+    "prod": "ng build --prod && npm run clean && npm run package"
   },
   "private": true,
   "dependencies": {

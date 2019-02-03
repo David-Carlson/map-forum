@@ -18,7 +18,8 @@ export class MapCardComponent implements OnInit {
   }
 
   onApprove() {
-    this.mapService.approveMap(this.mapInfo.name);
+    this.mapService.approveMap(this.mapInfo.mapname)
+      .subscribe(map => console.log('recieved ' + map));
   }
   // onDeny() {
 

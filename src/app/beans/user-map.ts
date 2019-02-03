@@ -1,21 +1,24 @@
 export class UserMap {
-    name: string;
-    username: string;
+    mapname: string;
+    submitter: string;
     description: string;
-    isPending: boolean;
+    status: string;
+    uploaddate: Date;
+    
     pictureFile: File;
-    pictureDataUrl: string | ArrayBuffer;
+    
+    image: string | ArrayBuffer;
     mapFile: File;
-    static createFromFiles(username: string, name: string, description: string, isPending: boolean, pictureFile: File, mapFile: File): UserMap  {
+    static createFromFiles(submitter: string, mapname: string, description: string, status: string, pictureFile: File, mapFile: File): UserMap  {
         var reader = new FileReader();
-        var pictureDataUrl;
-        reader.onload = e => pictureDataUrl = reader.result;
-        reader.readAsDataURL(pictureFile);
-        return new UserMap(username, name, description, isPending, pictureFile, pictureDataUrl, mapFile);
+        var image;
+        reader.onload = e => image = reader.result;
+        reader.readAsDataURL(image);
+        return new UserMap(submitter, mapname, description, status, pictureFile, image, mapFile);
     }
-    constructor(username: string, name: string, description: string, isPending: boolean, pictureFile: File, picture: string | ArrayBuffer, mapFile: File) {
-        this.username = username; this.name = name; this.description = description; this.isPending = isPending;
-        this.pictureFile = pictureFile; this.pictureDataUrl = picture; this.mapFile = mapFile;
+    constructor(submitter: string, mapname: string, description: string, status: string, pictureFile: File, picture: string | ArrayBuffer, mapFile: File) {
+        this.submitter = submitter; this.mapname = mapname; this.description = description; this.status = status;
+        this.pictureFile = pictureFile; this.image = picture; this.mapFile = mapFile;
     }
 }
 

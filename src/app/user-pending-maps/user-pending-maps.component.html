@@ -1,3 +1,25 @@
-<p>
-  user-pending-maps works!
-</p>
+<main role='main'>
+  <section id='user-spotlight' class='container nes-container with-title'>
+    <h2 class="title">Who am I?</h2>
+    <div class="messages">
+      <div class="message -left">
+        <div class="row">
+            <i class="col-md-1 nes-bcrikko"></i>
+            <div class="col-md-4 col-lg-6 nes-balloon from-left">
+              <p *ngIf='user; else noUser'>Hi, I'm {{user.name}}!<br>{{user.welcomeMessage}}</p>  
+              <ng-template #noUser id='alternate-message'>{{defaultMessage}}</ng-template>
+            </div>
+        </div>        
+      </div>
+    </div>      
+  </section>
+
+  <section id='user-maps' class='container nes-container with-title'>
+      <h2 class="title">My Maps</h2>      
+      <app-map-list [mapCards]='myResolvedMaps' [showAuthor]='false'></app-map-list>
+  </section>
+  <section id='user-maps' class='container nes-container with-title'>
+      <h2 class="title">My Pending Maps</h2>      
+      <app-map-list [mapCards]='myPendingMaps' [showAuthor]='false'></app-map-list>
+  </section>
+</main>

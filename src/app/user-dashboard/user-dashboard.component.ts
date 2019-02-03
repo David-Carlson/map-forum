@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserMap } from '../beans/user-map';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
-
+  @Input() mapCards: UserMap[];
   constructor() { }
 
   ngOnInit() {

@@ -9,12 +9,16 @@ import { UserMap } from '../beans/user-map';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+const textHttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
-  private mapUrl = 'api/maps';
+  // private mapUrl = 'http://localhost:8080/api/maps';
+  private mapUrl = 'http://localhost:8080/api/maps';
 
   constructor(
     private http: HttpClient,
@@ -50,16 +54,25 @@ export class MapService {
   getPendingAndResolvedMaps(allMaps: UserMap[]): any {
     var pending: UserMap[];
     var resolved: UserMap[];
-    pending = allMaps.filter(m => m.isPending);
-    resolved = allMaps.filter(m => !m.isPending);
+    pending = allMaps.filter(m => m.status === 'pending');
+    resolved = allMaps.filter(m => !(m.status === 'pending'));
     return { 'pending': pending, 'resolved': resolved };
   }
   approveMap(mapName: string): Observable<any> {
     let approveUrl = this.mapUrl + `/approve`;
-    return this.http.put<string>(approveUrl, mapName, httpOptions)
+    console.log(mapName);
+    return this.http.post<string>(approveUrl, mapName, textHttpOptions)
       .pipe(
         tap(_ => this.log(`approved map ${mapName}`)),
         catchError(this.handleError('approveMap', null))
+      );
+  }
+  getMyMaps(): Observable<UserMap[]> {
+    let singleMapUrl = this.mapUrl + `/me`;
+    return this.http.get<UserMap[]>(singleMapUrl)
+      .pipe(
+        tap(_ => this.log('fetched my maps')),
+        catchError(this.handleError('getMyMap', []))
       );
   }
 

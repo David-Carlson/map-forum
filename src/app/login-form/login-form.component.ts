@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../services/authentication.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,7 +23,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,22 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.invalid) 
       return;
     this.loading = true;
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+          data => {            
+            if (data['admin'] === 'user')
+              // console.log('is user');
+              this.router.navigate(['users/dashboard']);
+            else if ((data['admin'] === 'admin'))
+              // console.log('is admin');
+              this.router.navigate(['admin/dashboard']);
+            else
+              console.log("Bad admin status " + data['admin'])
+          },
+          error => {
+            console.log('Problem logging in');
+          });
     
   }
 

@@ -1,8 +1,8 @@
 <div class="nes-container with-title">
-  <p class="title">{{mapInfo.name}}</p>
+  <p class="title">{{mapInfo.mapname}}</p>
   <div class="card mb-4 box-shadow">
-    <a routerLink="/maps/{{mapInfo.name}}">
-      <img class="card-img-top" src="{{mapInfo.pictureDataUrl}}" alt="Map Picture" >
+    <a routerLink="/maps/{{mapInfo.mapname}}">
+      <img class="card-img-top" src="{{mapInfo.image}}" alt="Map Picture" >
     </a>
     <div class="card-body">
       
@@ -10,12 +10,12 @@
         <p class="card-text">{{mapInfo.description}}</p>       
 
         <div class="card-footer align-items-center">
-          <a routerLink="/maps/{{mapInfo.name}}">
+          <a routerLink="/maps/{{mapInfo.mapname}}">
             <button type="button" class="nes-btn">View</button>
           </a>
           <br>
-          <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.username}}">
-            <button type="button" class="nes-btn">By: {{mapInfo.username}}</button>
+          <a *ngIf='showAuthor' routerLink="/users/{{mapInfo.submitter}}">
+            <button type="button" class="nes-btn">By: {{mapInfo.submitter}}</button>
           </a>
           <div class="btn-group" *ngIf='pendingButton' role='group' aria-label='Approve or Deny'>
             <button type='button' class='nes-btn is-success' (click)='onApprove()'>Approve</button>

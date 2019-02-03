@@ -46,10 +46,10 @@ import { LoginFormComponent } from './login-form/login-form.component';
     AppRoutingModule, 
     HttpClientModule, 
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     // Comment these two lines & remove comma on line above to remove mock-backend
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false})
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [],
   bootstrap: [AppComponent]

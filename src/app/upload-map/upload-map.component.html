@@ -6,11 +6,11 @@
     <form #mapForm='ngForm' (ngSubmit)='onSubmit()' class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
       <h2 class="title">
         <input  type='text' class='form-control nes-field h3' required placeholder="Map name here"
-          #mapName name='map-name' id='map-name'[(ngModel)]='uploadMap.name'/>
+          #mapName name='map-name' id='map-name'[(ngModel)]='uploadMap.mapname'/>
       </h2>
       
       <div class="card mb-8 box-shadow">
-        <img class="card-img-top" [src]="uploadMap.pictureDataUrl ? uploadMap.pictureDataUrl : defaultMapPic" alt="Map Picture">
+        <img class="card-img-top" [src]="uploadMap.image ? uploadMap.image : defaultMapPic" alt="Map Picture">
 
         <div class="card-body dflex justifiy-content-between align-items-center">
           <!-- <button type="button" class="nes-btn">Upload Picture</button> -->

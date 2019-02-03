@@ -22,7 +22,7 @@ export class UploadMapComponent implements OnInit {
 
 
   constructor() { 
-    this.uploadMap = new UserMap('', '', '', true, null, null, null);
+    this.uploadMap = new UserMap('', '', '', 'pending', null, null, null);
   }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class UploadMapComponent implements OnInit {
       const pictureFile = event.target.files[0];
       this.uploadMap.pictureFile = pictureFile;
       var reader = new FileReader();
-      reader.onload = e => this.uploadMap.pictureDataUrl = reader.result;
+      reader.onload = e => this.uploadMap.image = reader.result;
       reader.readAsDataURL(pictureFile);
       console.log('done with pictureFile');
       console.log(this.uploadMap.pictureFile == null)
