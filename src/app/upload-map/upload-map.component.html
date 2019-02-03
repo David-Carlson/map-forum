@@ -1,6 +1,51 @@
 <!-- https://codepen.io/kpourdeilami/pen/KDepk?editors=1010 for expanding text -->
 <!-- https://angular.io/guide/forms -->
 <!-- TODO: add name to inputs? -->
+<main role=main>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">NowRegister with our website</h1>
+      <div class="nes-container" >
+        <form [formGroup]='uploadForm' (ngSubmit)='onSubmit()' class="my-2 my-lg-0">
+          <div class="form-group">
+            <!-- <label for="username">Username</label> -->
+            <input type="text" formControlName="mapname" class="form-control mr-2 login-input" [ngClass]="{ 'is-invalid': submitted && f.mapname.errors }" 
+              placeholder="Map Name"/>
+            <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div> -->
+          </div>
+          <img class="card-img-top" [src]="f.image ? f.image : defaultMapPic" alt="Map Picture">
+          
+          <div class="upload-btn-wrapper form-group">
+            <button class="nes-btn">Upload an image</button>
+            <input type="file" formControlName='image' accept='image/*' class='form-control' (change)='readImage($event)'/>
+          </div>  
+          <div class="upload-btn-wrapper form-group">
+            <button class="nes-btn">Upload a file</button>
+            <input type="file" formControlName='file' accept='image/*' class='form-control' (change)='readFile($event)'/>
+          </div>  
+
+          <div class="form-group">
+            <label for='map-info-input'>Map Description:</label>
+            <textarea class='form-control nes-textarea' formControlName='description' [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+              placeholder="Write about what makes your map unique"></textarea>   
+          </div>
+
+          <div class="form-group">
+            <button [disabled]='loading' class='nes-btn is-primary'>Upload</button>
+            <!-- <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+            <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
+          </div>  
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- 
 <main role='main' class='container'>
   <div class="row">
     <form #mapForm='ngForm' (ngSubmit)='onSubmit()' class='col-xs-12 col-lg-6 mx-auto nes-container with-title is-centered'>
@@ -13,10 +58,7 @@
         <img class="card-img-top" [src]="uploadMap.image ? uploadMap.image : defaultMapPic" alt="Map Picture">
 
         <div class="card-body dflex justifiy-content-between align-items-center">
-          <!-- <button type="button" class="nes-btn">Upload Picture</button> -->
-          <!-- <div class="form-group">
-            <input type="file" class="filestyle" data-icon="false">
-          </div> -->
+
           <div class="upload-btn-wrapper form-group">
             <button class="nes-btn">Upload an image</button>
             <input type="file" accept='image/*' class='form-control' required (change)='readImage($event)'
@@ -39,16 +81,15 @@
                 A description is required
               </div>
               <br>
-              <!-- <P>{{mapDescription.className}}</P> -->
-              <!-- <p>Form valid? {{mapForm.form.valid}}</p> -->
           </div>
           <p *ngIf='uploadMap.file'>Map File here</p>
           <p *ngIf='uploadMap.image'>Picture File here</p>
-          <button (click)='onSubmit()' type="submit" class="nes-btn is-disabled" 
-            [className]="mapForm.form.valid  && uploadMap.file && uploadMap.image ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
+          <button (click)='onSubmit()' type="submit" class="nes-btn" 
+          
+            [className]="mapForm.form.valid  && uploadMap.file && uploadMap.image ? 'nes-btn is-primary' : 'nes-btn'" >Submit Map</button>
         </div>  
       </div>
           
     </form>
   </div>
-</main>
+</main> -->

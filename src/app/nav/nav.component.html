@@ -30,7 +30,7 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
     </ul>
-    <app-login-form></app-login-form>
+    <app-login-form *ngIf='!currentUser'></app-login-form>
   </div>
 </nav>
 <!-- <span class="sr-only">(current) -->
