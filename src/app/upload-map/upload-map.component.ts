@@ -6,6 +6,7 @@ import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 
 import { UserMap } from '../beans/user-map';
+import { MapService } from '../services/map.service';
 // https://angular.io/guide/reactive-forms
 // https://stackoverflow.com/questions/44106910/angular-there-is-no-directive-with-exportas-set-to-ngmodel
 // https://www.talkingdotnet.com/show-image-preview-before-uploading-using-angular-7/
@@ -21,8 +22,10 @@ export class UploadMapComponent implements OnInit {
   mapPictureMessage;
 
 
-  constructor() { 
-    this.uploadMap = new UserMap('', '', '', 'pending', null, null, null);
+  constructor(
+    private mapService: MapService
+  ) { 
+    this.uploadMap = new UserMap('', '', '', 'pending', null, null);
   }
 
   ngOnInit() {
@@ -40,28 +43,30 @@ export class UploadMapComponent implements OnInit {
       }
 
       const pictureFile = event.target.files[0];
-      this.uploadMap.pictureFile = pictureFile;
       var reader = new FileReader();
       reader.onload = e => this.uploadMap.image = reader.result;
       reader.readAsDataURL(pictureFile);
       console.log('done with pictureFile');
-      console.log(this.uploadMap.pictureFile == null)
     }
   }
   readFile(event): void {
     if (event.target.files && event.target.files[0]) {
-      this.uploadMap.mapFile = event.target.files[0];
-      // TODO: Find our correct reader method
-      // var reader = new FileReader();
-      // reader.onload = e => this.mapFile = reader.result;
-      // reader.readAsDataURL(file);
+      var mapFile = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = e => this.uploadMap.file = reader.result;
+      reader.readAsDataURL(mapFile);
+      console.log('done with pictureFile');
       console.log('done with map-file upload');
-      console.log(this.uploadMap.mapFile == null)
     }
   }
 
   onSubmit() {
+    console.log('Submitting');
     this.submitted = true;
+    this.mapService.uploadMap(this.uploadMap.mapname, this.uploadMap.description, "change me", this.uploadMap.image, this.uploadMap.file)
+      .subscribe(
+        mapData => console.log('Got back ' + mapData)
+      );
   }
 
 }

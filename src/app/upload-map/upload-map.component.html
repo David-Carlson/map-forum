@@ -42,10 +42,10 @@
               <!-- <P>{{mapDescription.className}}</P> -->
               <!-- <p>Form valid? {{mapForm.form.valid}}</p> -->
           </div>
-          <p *ngIf='uploadMap.mapFile'>Map File here</p>
-          <p *ngIf='uploadMap.pictureFile'>Picture File here</p>
-          <button type="submit" class="nes-btn is-disabled" 
-            [className]="mapForm.form.valid  && uploadMap.mapFile && uploadMap.pictureFile ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
+          <p *ngIf='uploadMap.file'>Map File here</p>
+          <p *ngIf='uploadMap.image'>Picture File here</p>
+          <button (click)='onSubmit()' type="submit" class="nes-btn is-disabled" 
+            [className]="mapForm.form.valid  && uploadMap.file && uploadMap.image ? 'nes-btn is-primary' : 'nes-btn is-disabled'" [disabled]='mapForm.form.valid'>Submit Map</button>
         </div>  
       </div>
           

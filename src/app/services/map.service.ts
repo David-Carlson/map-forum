@@ -75,6 +75,23 @@ export class MapService {
         catchError(this.handleError('getMyMap', []))
       );
   }
+// return this.http.post<UserMap>(this.mapUrl + `/upload${mapData}`, mapData, httpOptions)
+  uploadMap(mapname: string, description: string, submitter: string, image: string | ArrayBuffer, file: string | ArrayBuffer ): Observable<UserMap> {
+    var status = 'pending'; var uploaddate = null;
+    var mapDataObj = { "image": "AAAA", "file": "BBBB"};
+    var mapData = `?image=AAAA&file=BBBB`;
+    return this.http.get<UserMap>(this.mapUrl + `/upload`, params: mapDataObj, observe: 'response')
+      .pipe(
+        tap(_ => this.log('uploading map')),
+        catchError(this.handleError('uploadMap', null))
+      );
+    //   var mapData = `?image=AAAA&file=BBBB`;
+    // return this.http.get<UserMap>(this.mapUrl + `/upload${mapData}`)
+    //   .pipe(
+    //     tap(_ => this.log('uploading map')),
+    //     catchError(this.handleError('uploadMap', null))
+    //   );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
