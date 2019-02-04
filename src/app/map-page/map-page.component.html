@@ -1,32 +1,10 @@
 <main role='main'>
   <div class="container">
     <div class="row">
-        <div class="col-md-10 col-sm-12 mx-auto nes-container with-title">
-            <p class="title" *ngIf='map; else defaultName'>{{map.mapname}}</p>
-            <ng-template #defaultName>Finding map...</ng-template>
-            <div class="card mb-4 box-shadow">
-              <img class="card-img-top" [src]="map? map.image : altPic" alt="Map Picture" >
-              
-              <div class="card-body">
-                
-                <div class="dflex justifiy-content-between align-items-center">
-                  <p class="card-text" *ngIf='map; else defaultDescription'>{{map.description}}</p>       
-                  <ng-template #defaultDescription>...</ng-template>
-          
-                  <div class="card-footer align-items-center">
-                    <a *ngIf='map' routerLink="/users/{{map.submitter}}">
-                      <button type="button" class="nes-btn mx-auto">By: {{map.submitter}}</button>
-                    </a>
-                    <!-- <div class="btn-group" *ngIf='pendingButton' role='group' aria-label='Approve or Deny'>
-                      <button type='button' class='nes-btn is-success' (click)='onApprove()'>Approve</button>
-                      <button type='button' class='nes-btn is-error'>Deny</button>
-                    </div> -->
-                  </div>                  
-                </div>
-              </div>
-            </div>  
-          </div>
-    </div>    
+      <div class="col-sm-8" *ngIf='map' >
+        <app-map-card [mapInfo]='map' [showAuthor]='true' [showView]='false'></app-map-card>
+      </div>
+    </div>
   </div>
 </main>
 

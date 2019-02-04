@@ -6,6 +6,7 @@ import { User } from '../beans/user';
 import { UserMap } from '../beans/user-map';
 import { MapService } from '../services/map.service';
 import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-user-pending-maps',
@@ -21,13 +22,17 @@ export class UserPendingMapsComponent implements OnInit {
     private route: ActivatedRoute,
     private mapService: MapService,
     private userService: UserService,
-    private location: Location
+    private location: Location,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.getMyMaps();
   }
   getMyMaps(): void {
+    const username = this.authenticationService.currentUserValue.username;
+    this.userService.getUser(username)
+      .subscribe(user => this.user = user);
     this.mapService.getMyMaps()
       .subscribe(mapList => this.handleUserMaps(mapList));
   }

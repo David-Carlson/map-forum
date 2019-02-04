@@ -10,18 +10,21 @@ import { User } from '../beans/user';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+const textHttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'http://localhost:8080/api/users'
+  private userUrl = '/api/users'
 
   constructor(
     private httpClient: HttpClient, 
     private messageService: MessagesService) { }
 
   getUser(username: string): Observable<User> {
-    return this.httpClient.get<User[]>(this.userUrl + `/?name=${username}`)
+    return this.httpClient.post<User>(this.userUrl + '/search', username, textHttpOptions)
       .pipe(
         tap(_ => this.log('fetched User')),
         catchError(this.handleError('getUser', null))

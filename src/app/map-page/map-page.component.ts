@@ -23,10 +23,14 @@ export class MapPageComponent implements OnInit {
     this.getMap();
   }
   getMap(): void {
-    const name = this.route.snapshot.paramMap.get('name');
-    console.log(`Retrieving ${name}`)
+    const name = this.route.snapshot.paramMap.get('mapname');
+    console.log(`Retrieving ${name}'s page`)
     this.mapService.getMap(name)
-      .subscribe(mapList => this.map = mapList[0]);
+      .subscribe(mapList => this.handleMap(mapList));
+  }
+  handleMap(mapList) {
+    // console.log("Map Page got: " + JSON.stringify(mapList));
+    this.map = mapList;
   }
 
   goBack(): void {

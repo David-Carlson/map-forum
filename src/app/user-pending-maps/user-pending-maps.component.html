@@ -6,7 +6,7 @@
         <div class="row">
             <i class="col-md-1 nes-bcrikko"></i>
             <div class="col-md-4 col-lg-6 nes-balloon from-left">
-              <p *ngIf='user; else noUser'>Hi, I'm {{user.name}}!<br>{{user.welcomeMessage}}</p>  
+              <p *ngIf='user; else noUser'>Hi, I'm {{user.name}}!</p>  
               <ng-template #noUser id='alternate-message'>{{defaultMessage}}</ng-template>
             </div>
         </div>        

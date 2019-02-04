@@ -10,7 +10,7 @@
         <p class="card-text">{{mapInfo.description}}</p>       
 
         <div class="card-footer align-items-center">
-          <a routerLink="/maps/{{mapInfo.mapname}}">
+          <a *ngIf='showView' routerLink="/maps/{{mapInfo.mapname}}">
             <button type="button" class="nes-btn">View</button>
           </a>
           <br>

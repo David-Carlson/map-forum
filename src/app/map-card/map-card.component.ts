@@ -12,6 +12,7 @@ export class MapCardComponent implements OnInit {
   @Input() mapInfo: UserMap;
   @Input() showAuthor: boolean = true;
   @Input() pendingButton: boolean = false;
+  @Input() showView: boolean = true;
   constructor(private mapService: MapService) { }
 
   ngOnInit() {

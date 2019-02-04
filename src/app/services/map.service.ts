@@ -18,7 +18,7 @@ const textHttpOptions = {
 })
 export class MapService {
   // private mapUrl = 'http://localhost:8080/api/maps';
-  private mapUrl = 'http://localhost:8080/api/maps';
+  private mapUrl = '/api/maps';
 
   constructor(
     private http: HttpClient,
@@ -34,7 +34,7 @@ export class MapService {
   }
 
   getUserMaps(username: string): Observable<UserMap[]> {
-    let userMapUrl = this.mapUrl + `/?username=${username}`
+    let userMapUrl = this.mapUrl + `/submitter?submitter=${username}`
     this.messageService.add(`MapService: fetched maps by ${username}`);
     return this.http.get<UserMap[]>(userMapUrl)
       .pipe(
@@ -43,8 +43,8 @@ export class MapService {
       );
   }
   // TODO: Test this
-  getMap(name: string): Observable<UserMap[]> {
-    let singleMapUrl = this.mapUrl + `/?name=${name}`;
+  getMap(mapname: string): Observable<UserMap[]> {
+    let singleMapUrl = this.mapUrl + `/?name=${mapname}`;
     return this.http.get<UserMap[]>(singleMapUrl)
       .pipe(
         tap(_ => this.log('fetched single map')),
@@ -54,8 +54,14 @@ export class MapService {
   getPendingAndResolvedMaps(allMaps: UserMap[]): any {
     var pending: UserMap[];
     var resolved: UserMap[];
-    pending = allMaps.filter(m => m.status === 'pending');
-    resolved = allMaps.filter(m => !(m.status === 'pending'));
+    if (allMaps && allMaps.length != 0) {
+      pending = allMaps.filter(m => m.status === 'pending');
+      resolved = allMaps.filter(m => !(m.status === 'pending'));
+    }
+    else{
+      pending = []; resolved = [];
+    }
+    
     return { 'pending': pending, 'resolved': resolved };
   }
   approveMap(mapName: string): Observable<any> {

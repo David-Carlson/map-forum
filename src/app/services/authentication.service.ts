@@ -14,7 +14,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   // For reactively updating to user logins/logouts
   public currentUser: Observable<User>;
-  private authUrl: string = 'http://localhost:8080';
+  private authUrl: string = '';
 
   constructor(
     private http: HttpClient,

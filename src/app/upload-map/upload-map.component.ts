@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { first } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 import { UserMap } from '../beans/user-map';
 import { MapService } from '../services/map.service';
@@ -32,7 +33,8 @@ export class UploadMapComponent implements OnInit {
     private route: ActivatedRoute, 
     private router: Router,
     private mapService: MapService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private location: Location
   ) { 
     this.uploadMap = new UserMap('', '', '', 'pending', null, null);
   }
@@ -86,8 +88,17 @@ export class UploadMapComponent implements OnInit {
     const submitter = this.authenticationService.currentUserValue.username;
     this.mapService.uploadMap(this.f.mapname.value, this.f.description.value, submitter, this.uploadMap.image, this.uploadMap.file)
       .subscribe(
-        mapData => console.log('Got back ' + mapData),error => console.log('Error uploading: ' + error)
+        mapData => this.onSuccess(mapData),error => console.log('Error uploading: ' + error)
       );
+  }
+
+  onSuccess(mapData: any) {
+    console.log('Map Upload got back ' + mapData)
+    this.goBack();
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

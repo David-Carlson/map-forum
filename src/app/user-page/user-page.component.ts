@@ -14,6 +14,7 @@ import { UserService } from '../services/user.service';
 })
 export class UserPageComponent implements OnInit {
   user: User;
+  username: string;
   myResolvedMaps: UserMap[];
   myPendingMaps: UserMap[];
   defaultMessage: string = 'Tracking down that user...';
@@ -26,9 +27,9 @@ export class UserPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let username = this.route.snapshot.paramMap.get('name');
-    this.getUserMaps(username);
-    this.getUserInfo(username);
+    this.username = this.route.snapshot.paramMap.get('username');
+    this.getUserMaps(this.username);
+    this.getUserInfo(this.username);
   }
   getUserInfo(username: string): void {
     this.userService.getUser(username)
@@ -37,8 +38,8 @@ export class UserPageComponent implements OnInit {
   }
   handleUserInfo(response: User) {
     if (response != null){
-      this.user = response[0];
-      console.log('is user');
+      this.user = response;
+      console.log(this.user + ' is user');
     }
     else {
       console.log('No user');

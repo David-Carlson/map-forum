@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../beans/user';
 
@@ -9,13 +10,19 @@ import { User } from '../beans/user';
 })
 export class NavComponent implements OnInit {
   public currentUser: User;
-  constructor(public authenticationService: AuthenticationService) { }
+  constructor(
+    public authenticationService: AuthenticationService,
+    private location: Location) { }
 
   ngOnInit() {
     this.authenticationService.currentUser.subscribe(data => this.currentUser = data);
   }
   onLogout(): void {
     this.authenticationService.logout();
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

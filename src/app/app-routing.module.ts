@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'users/dashboard', component: UserDashboardComponent },
   { path: 'users/me', component: UserPendingMapsComponent },
-  { path: 'maps/:name', component: MapPageComponent },
-  { path: 'users/:name', component: UserPageComponent },
+  { path: 'maps/:mapname', component: MapPageComponent },
+  { path: 'users/:username', component: UserPageComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'uploadMap', component: UploadMapComponent },
   { path: 'admin/dashboard', component: AdminPendingMapsComponent}
